@@ -5,7 +5,46 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public InventoryObject inventory;
+    [SerializeField] GameObject PlayerObject;
+    public int moveDistance = 1;
     // Start is called before the first frame update
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.A) && !Input.GetKey(KeyCode.LeftShift))
+        {
+            PlayerObject.transform.position = new Vector3 (PlayerObject.transform.position.x - moveDistance, PlayerObject.transform.position.y, PlayerObject.transform.position.z);
+        }
+        if (Input.GetKeyDown(KeyCode.D) && !Input.GetKey(KeyCode.LeftShift))
+        {
+            PlayerObject.transform.position = new Vector3(PlayerObject.transform.position.x + moveDistance, PlayerObject.transform.position.y, PlayerObject.transform.position.z);
+        }
+        if (Input.GetKeyDown(KeyCode.S) && !Input.GetKey(KeyCode.LeftShift))
+        {
+            PlayerObject.transform.position = new Vector3(PlayerObject.transform.position.x, PlayerObject.transform.position.y, PlayerObject.transform.position.z - moveDistance);
+        }
+        if (Input.GetKeyDown(KeyCode.W) && !Input.GetKey(KeyCode.LeftShift))
+        {
+            PlayerObject.transform.position = new Vector3(PlayerObject.transform.position.x, PlayerObject.transform.position.y, PlayerObject.transform.position.z + moveDistance);
+        }
+
+        if (Input.GetKeyDown(KeyCode.A) && Input.GetKey(KeyCode.LeftShift))
+        {
+            PlayerObject.transform.position = new Vector3(PlayerObject.transform.position.x - moveDistance, PlayerObject.transform.position.y, PlayerObject.transform.position.z + moveDistance);
+        }
+        if (Input.GetKeyDown(KeyCode.D) && Input.GetKey(KeyCode.LeftShift))
+        {
+            PlayerObject.transform.position = new Vector3(PlayerObject.transform.position.x + moveDistance, PlayerObject.transform.position.y, PlayerObject.transform.position.z - moveDistance);
+        }
+        if (Input.GetKeyDown(KeyCode.S) && Input.GetKey(KeyCode.LeftShift))
+        {
+            PlayerObject.transform.position = new Vector3(PlayerObject.transform.position.x - moveDistance, PlayerObject.transform.position.y, PlayerObject.transform.position.z - moveDistance);
+        }
+        if (Input.GetKeyDown(KeyCode.W) && Input.GetKey(KeyCode.LeftShift))
+        {
+            PlayerObject.transform.position = new Vector3(PlayerObject.transform.position.x + moveDistance, PlayerObject.transform.position.y, PlayerObject.transform.position.z + moveDistance);
+        }
+
+    }
     public void OnTriggerEnter(Collider other)
     {
         var item = other.GetComponent<Item>();

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0783ab5d796e8d4399e8e01c92415d9, type: 3}
   m_Name: Beef
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7695882195741945152, guid: 7cd1575423729fe488fd5ec414c84092, type: 3}
+  prefab: {fileID: 4525714371594614723, guid: 0d653354e3c0b1f43a1313d15cec6d19, type: 3}
   type: 0
   itemname: Beef
   specificType: Consumable
