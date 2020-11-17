@@ -21,5 +21,21 @@ public class LevelController : MonoBehaviour
         {
             _ShiftArrowImages.SetActive(false);
         }
+        if(Input.GetKeyDown(KeyCode.LeftArrow) && _inventoryPanel.activeSelf)
+        {
+            _inventoryPanel.GetComponent<DisplayInventory>().UpdateCategory(-1);
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow) && _inventoryPanel.activeSelf)
+        {
+            _inventoryPanel.GetComponent<DisplayInventory>().UpdateCategory(1);
+        }
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            EndApplication();
+        }
+    }
+    public void EndApplication()
+    {
+        Application.Quit();
     }
 }
