@@ -10,6 +10,7 @@ public class DisplayInventory : MonoBehaviour
     private int currentItem = 0;
 
     public InventoryObject inventory;
+    public GameObject canvasGameObject;
     public GameObject templateConsole;
     public GameObject allCategories;
     public GameObject selectedCategory;
@@ -25,7 +26,7 @@ public class DisplayInventory : MonoBehaviour
     public int Y_SPACE_BETWEEN_ITEMS;
     public int NUMBER_OF_ROWS;
 
-    public int maxLines = 5;
+    public int maxLines = 10;
 
     public float distanceToMove;
 
@@ -339,9 +340,20 @@ public class DisplayInventory : MonoBehaviour
     {
         for(int i=0; i<consoleOutput.Count; i++)
         {
+            consoleText.Add(Instantiate(templateConsole, canvasGameObject.transform));
+            consoleText[i].SetActive(true);
             RectTransform consoleTranform = consoleText[i].GetComponent<RectTransform>();
-            consoleText.Add(Instantiate(templateConsole));
-            consoleTranform.localPosition = new Vector3(consoleTranform.localPosition.x, consoleTranform.localPosition.y + (i*30), consoleTranform.localPosition.z);
+            consoleTranform.localPosition = new Vector3(consoleTranform.localPosition.x, consoleTranform.localPosition.y+(i*30), 0.0f);
+            consoleText[i].GetComponentInChildren<TextMeshProUGUI>().text = consoleOutput[i];
+        }
+    }
+
+    public void clearConsole()
+    {
+        for(int i=consoleText.Count-1; i>=0; i--)
+        {
+            Destroy(consoleText[i]);
+            consoleText.RemoveAt(i);
         }
     }
 

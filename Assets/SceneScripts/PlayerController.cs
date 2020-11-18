@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
         {
             inventory.AddItem(item.item, 1);
             _inventoryPanel.GetComponent<DisplayInventory>().AddPickUp("You have picked up "+ item.item.itemname);
+            _inventoryPanel.GetComponent<DisplayInventory>().clearConsole();
             _inventoryPanel.GetComponent<DisplayInventory>().printToConsole();
             Destroy(other.gameObject);
         }
