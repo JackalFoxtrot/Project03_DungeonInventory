@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 933dfd44a9284b945ba43fdfd78f1c6d, type: 3}
-  m_Name: Bones
+  m_Name: PtOHealing
   m_EditorClassIdentifier: 
   prefab: {fileID: 4525714371594614723, guid: 0d653354e3c0b1f43a1313d15cec6d19, type: 3}
-  type: 3
-  itemname: Bones
-  specificType: 
-  description: The left overs of those you've slain!
-  identified: 0
+  type: 0
+  itemname: Potion of Healing
+  description: Potion that heals damage taken in battle.
+  unidentified: 0
   favorited: 0
-  value: 0
-  rarity: 0
+  value: 15
+  rarity: 1
+  specificType: 3

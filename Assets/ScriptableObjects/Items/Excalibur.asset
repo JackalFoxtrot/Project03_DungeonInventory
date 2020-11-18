@@ -9,16 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0783ab5d796e8d4399e8e01c92415d9, type: 3}
-  m_Name: Beef
+  m_Script: {fileID: 11500000, guid: 2fac52778c0ce5a4184ae6e30e867346, type: 3}
+  m_Name: Excalibur
   m_EditorClassIdentifier: 
   prefab: {fileID: 4525714371594614723, guid: 0d653354e3c0b1f43a1313d15cec6d19, type: 3}
-  type: 0
-  itemname: Beef
-  description: A chunk of beef from a slain cow.
+  type: 1
+  itemname: Excalibur
+  description: Holy Sword of King Arthur
   unidentified: 0
   favorited: 0
-  value: 0
-  rarity: 0
-  specificType: 3
-  restoreHealthValue: 16
+  value: 1000
+  rarity: 5
+  specificType: 5
+  atkBonus: 200
+  defBound: 0
