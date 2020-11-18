@@ -3081,7 +3081,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1593983635
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3089,7 +3089,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1593983634}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3759,7 +3759,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: 76d7ca08a333bb64a866374c8fa80c7c, type: 2}
-  templateConsole: {fileID: 0}
+  canvasGameObject: {fileID: 1023704024}
+  templateConsole: {fileID: 1593983634}
   allCategories: {fileID: 1383790063}
   selectedCategory: {fileID: 1559821657}
   itemInfoPanel: {fileID: 1952065431}

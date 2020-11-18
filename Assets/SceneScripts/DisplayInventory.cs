@@ -118,6 +118,12 @@ public class DisplayInventory : MonoBehaviour
                 obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
                 obj.GetComponentInChildren<TextMeshProUGUI>().text = sortedItems[i].amount.ToString("n0") + "x";
                 obj.GetComponentsInChildren<TextMeshProUGUI>()[1].text = sortedItems[i].item.itemname;                
+                
+                if(!sortedItems[i].item.newToInventory)
+                {
+                    obj.GetComponentsInChildren<TextMeshProUGUI>()[2].text = "";
+                }
+
                 itemsDisplayed.Add(sortedItems[i], obj);
             }
         }
