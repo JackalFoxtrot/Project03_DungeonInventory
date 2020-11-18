@@ -18,7 +18,7 @@ MonoBehaviour:
   description: A large two handed greatsword! Be careful where you swing it.
   unidentified: 0
   favorited: 0
-  newToInventory: 0
+  newToInventory: 1
   value: 23
   rarity: 3
   specificType: 6

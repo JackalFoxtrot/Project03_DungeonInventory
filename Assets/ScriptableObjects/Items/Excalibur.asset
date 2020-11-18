@@ -18,7 +18,7 @@ MonoBehaviour:
   description: Holy Sword of King Arthur
   unidentified: 0
   favorited: 0
-  newToInventory: 0
+  newToInventory: 1
   value: 1000
   rarity: 5
   specificType: 5

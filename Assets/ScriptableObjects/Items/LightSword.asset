@@ -18,7 +18,7 @@ MonoBehaviour:
   description: A starter 1H sword for any adventurer.
   unidentified: 0
   favorited: 0
-  newToInventory: 0
+  newToInventory: 1
   value: 5
   rarity: 2
   specificType: 5

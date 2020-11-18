@@ -18,7 +18,7 @@ MonoBehaviour:
   description: Potion that heals damage taken in battle.
   unidentified: 0
   favorited: 0
-  newToInventory: 0
+  newToInventory: 1
   value: 15
   rarity: 2
   specificType: 3
