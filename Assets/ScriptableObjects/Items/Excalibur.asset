@@ -17,7 +17,7 @@ MonoBehaviour:
   itemname: Excalibur
   description: Holy Sword of King Arthur
   unidentified: 0
-  favorited: 0
+  favorited: 1
   newToInventory: 1
   value: 1000
   rarity: 5

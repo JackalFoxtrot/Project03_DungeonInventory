@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 933dfd44a9284b945ba43fdfd78f1c6d, type: 3}
+  m_Name: Map
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4525714371594614723, guid: 0d653354e3c0b1f43a1313d15cec6d19, type: 3}
+  type: 3
+  itemname: Map of Strendoh
+  description: This is a map of Strendoh, using it will increase your knowledge of
+    the area.
+  unidentified: 0
+  favorited: 0
+  newToInventory: 1
+  value: 15
+  rarity: 2
+  specificType: 11

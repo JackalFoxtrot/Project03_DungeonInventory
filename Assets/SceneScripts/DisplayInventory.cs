@@ -6,7 +6,7 @@ using TMPro;
 public class DisplayInventory : MonoBehaviour
 {
     private RectTransform[] catTransformArray;
-    private int currentCategory = 1;
+    public int currentCategory = 1;
     private int currentItem = 0;
 
     public InventoryObject inventory;
@@ -17,7 +17,7 @@ public class DisplayInventory : MonoBehaviour
     public GameObject itemInfoPanel;
     public GameObject cursor;    
 
-    private int numbOfCats = 12;
+    public int numbOfCats = 12;
 
     public int X_START;
     public int Y_START;
@@ -72,6 +72,10 @@ public class DisplayInventory : MonoBehaviour
         else if(currentCategory == 2)
         {
             SortInventoryByFavorite();
+        }
+        else if (currentCategory == 3)
+        {
+            SortInventoryByIDConsum();
         }
         else if(currentCategory == 4)
         {
@@ -171,7 +175,7 @@ public class DisplayInventory : MonoBehaviour
         }
 
         //Selector Going Left
-        if (currentCategory < numbOfCats-1 && direction < 1)
+        if (currentCategory < numbOfCats - 1 && direction < 1)
         {
             catTransformArray[currentCategory].localPosition = new Vector3(selectedCatTransform.localPosition.x + (-direction * distanceToMove) - 2, 0.0f, 0.0f);
             ResetCursor();
@@ -231,6 +235,7 @@ public class DisplayInventory : MonoBehaviour
             itemInfoPanel.GetComponentsInChildren<TextMeshProUGUI>()[0].text = sortedItems[currentItem].item.itemname;
             itemInfoPanel.GetComponentsInChildren<TextMeshProUGUI>()[1].text = sortedItems[currentItem].item.description;
             itemInfoPanel.GetComponentsInChildren<TextMeshProUGUI>()[2].text = sortedItems[currentItem].item.value.ToString();
+            itemInfoPanel.GetComponentsInChildren<TextMeshProUGUI>()[3].text = sortedItems[currentItem].item.rarity.ToString()+"/5";
         }
         else
         {
@@ -247,83 +252,92 @@ public class DisplayInventory : MonoBehaviour
         }
     }
 
-    public void SortInventoryByType()
-    {
-        Debug.Log("Sort Inventory By Type Ran||Current Cat: " + currentCategory);
-        bool inserted = false;
-        sortedItems.Clear();
-        for (int i = 0; i < inventory.Container.Count; i++)
-        {
-            inserted = false;
-            if (inventory.Container[i].item.specificType == currentCategory)
-            {
-                if (sortedItems.Count == 0)
-                {
-                    sortedItems.Add(new InventorySlot(inventory.Container[i].item, inventory.Container[i].amount));
-                }
-                else
-                {
-                    for (int j = 0; j < sortedItems.Count; j++)
-                    {
-                        if (sortedItems[j].item.rarity <= inventory.Container[i].item.rarity && !inserted)
-                        {
-                            sortedItems.Insert(j, new InventorySlot(inventory.Container[i].item, inventory.Container[i].amount));
-                            inserted = true;
-                            j++;
-                        }
-                    }
-                    if (!inserted)
-                    {
-                        sortedItems.Add(new InventorySlot(inventory.Container[i].item, inventory.Container[i].amount));
-                    }
-                }
-            }
-        }
-    }
-
     public void SortInventory()
     {
         Debug.Log("Sort Inventory Ran||Current Cat: "+ currentCategory);
-        bool inserted = false;
         sortedItems.Clear();
         for (int i = 0; i < inventory.Container.Count; i++)
         {
-            inserted = false;
-            if (sortedItems.Count == 0)
+            SortByRarity(i);
+        }
+    }
+    public void SortInventoryByType()
+    {
+        Debug.Log("Sort Inventory By Type Ran||Current Cat: " + currentCategory);
+        sortedItems.Clear();
+        for (int i = 0; i < inventory.Container.Count; i++)
+        {
+            if (inventory.Container[i].item.specificType == currentCategory)
             {
-                sortedItems.Add(new InventorySlot(inventory.Container[i].item, inventory.Container[i].amount));
-            }
-            else
-            {
-                for(int j=0; j<sortedItems.Count; j++)
-                {
-                    if(sortedItems[j].item.rarity <= inventory.Container[i].item.rarity && !inserted)
-                    {
-                        sortedItems.Insert(j, new InventorySlot(inventory.Container[i].item, inventory.Container[i].amount));
-                        inserted = true;
-                        j++;
-                    }
-                }
-                if(!inserted)
-                {
-                    sortedItems.Add(new InventorySlot(inventory.Container[i].item, inventory.Container[i].amount));
-                }
+                SortByRarity(i);
             }
         }
     }
 
     public void SortInventoryByFavorite()
     {
+        Debug.Log("Sort Inventory By Favorite Ran||Current Cat: " + currentCategory);
+        bool inserted = false;
         sortedItems.Clear();
+        for (int i = 0; i < inventory.Container.Count; i++)
+        {
+            if (inventory.Container[i].item.favorited)
+            {
+                SortByRarity(i);
+            }
+        }
     }
 
     public void SortInventoryByIDConsum()
     {
+        Debug.Log("Sort Inventory By Id'd Consumables Ran||Current Cat: " + currentCategory);
+        bool inserted = false;
         sortedItems.Clear();
+        for (int i = 0; i < inventory.Container.Count; i++)
+        {
+            if (!inventory.Container[i].item.unidentified && inventory.Container[i].item.specificType == 3)
+            {
+                SortByRarity(i);
+            }
+        }
     }
     public void SortInventoryByUnkConsum()
     {
+        Debug.Log("Sort Inventory By Unk Consumables Ran||Current Cat: " + currentCategory);
+        bool inserted = false;
         sortedItems.Clear();
+        for (int i = 0; i < inventory.Container.Count; i++)
+        {
+            if (inventory.Container[i].item.unidentified && inventory.Container[i].item.specificType == 3)
+            {
+                SortByRarity(i);
+            }
+        }
+    }
+
+    public void SortByRarity(int i)
+    {
+        bool inserted = false;
+        if (sortedItems.Count == 0)
+        {
+            sortedItems.Add(new InventorySlot(inventory.Container[i].item, inventory.Container[i].amount));
+        }
+        else
+        {
+            for (int j = 0; j < sortedItems.Count; j++)
+            {
+                if (sortedItems[j].item.rarity <= inventory.Container[i].item.rarity && !inserted)
+                {
+                    sortedItems.Insert(j, new InventorySlot(inventory.Container[i].item, inventory.Container[i].amount));
+                    inserted = true;
+                    j++;
+                }
+            }
+            if (!inserted)
+            {
+                sortedItems.Add(new InventorySlot(inventory.Container[i].item, inventory.Container[i].amount));
+            }
+        }
     }
 
     public void AddPickUp(string output)

@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     public InventoryObject inventory;
     [SerializeField] GameObject PlayerObject;
     [SerializeField] GameObject _inventoryPanel;
+    [SerializeField] AudioClip _itemPickUpClip;
+    [SerializeField] AudioClip _playerWalkClip;
 
     public int moveDistance = 1;
     // Start is called before the first frame update
@@ -14,6 +16,11 @@ public class PlayerController : MonoBehaviour
     {
         if(!_inventoryPanel.activeSelf)
         {
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                AudioHelper.PlayClip2D(_playerWalkClip, 1.0f);
+            }
+
             if (Input.GetKeyDown(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.LeftShift))
             {
                 PlayerObject.transform.position = new Vector3(PlayerObject.transform.position.x - moveDistance, PlayerObject.transform.position.y, PlayerObject.transform.position.z);
@@ -46,7 +53,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.UpArrow) && Input.GetKey(KeyCode.LeftShift))
             {
                 PlayerObject.transform.position = new Vector3(PlayerObject.transform.position.x + moveDistance, PlayerObject.transform.position.y, PlayerObject.transform.position.z + moveDistance);
-            }
+            }  
         }
     }
     public void OnTriggerEnter(Collider other)
@@ -55,6 +62,7 @@ public class PlayerController : MonoBehaviour
         if(item)
         {
             inventory.AddItem(item.item, 1);
+            AudioHelper.PlayClip2D(_itemPickUpClip, 1.0f);
             _inventoryPanel.GetComponent<DisplayInventory>().AddPickUp("You have picked up "+ item.item.itemname);
             _inventoryPanel.GetComponent<DisplayInventory>().clearConsole();
             _inventoryPanel.GetComponent<DisplayInventory>().printToConsole();

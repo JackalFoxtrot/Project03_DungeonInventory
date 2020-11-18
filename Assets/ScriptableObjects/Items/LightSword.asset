@@ -17,7 +17,7 @@ MonoBehaviour:
   itemname: Light Sword
   description: A starter 1H sword for any adventurer.
   unidentified: 0
-  favorited: 0
+  favorited: 1
   newToInventory: 1
   value: 5
   rarity: 2

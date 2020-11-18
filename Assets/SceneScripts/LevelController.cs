@@ -19,6 +19,7 @@ public class LevelController : MonoBehaviour
             }
             if(!_inventoryPanel.activeSelf)
             {
+                _inventoryPanel.GetComponent<DisplayInventory>().itemInfoPanel.SetActive(false);
                 _inventoryPanel.GetComponent<DisplayInventory>().ToggleNewItems();
             }
         }
@@ -33,9 +34,13 @@ public class LevelController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.LeftArrow) && _inventoryPanel.activeSelf)
         {
             _inventoryPanel.GetComponent<DisplayInventory>().UpdateCategory(-1);
-            _inventoryPanel.GetComponent<DisplayInventory>().CheckInventory();
-            _inventoryPanel.GetComponent<DisplayInventory>().ResetCursor();
-            _inventoryPanel.GetComponent<DisplayInventory>().UpdateItemInfo();
+            Debug.Log("Inv Pan Current Cat: "+ _inventoryPanel.GetComponent<DisplayInventory>().currentCategory);
+            if(_inventoryPanel.GetComponent<DisplayInventory>().currentCategory != _inventoryPanel.GetComponent<DisplayInventory>().numbOfCats)
+            {
+                _inventoryPanel.GetComponent<DisplayInventory>().CheckInventory();
+                _inventoryPanel.GetComponent<DisplayInventory>().ResetCursor();
+                _inventoryPanel.GetComponent<DisplayInventory>().UpdateItemInfo();
+            }
         }
         if (Input.GetKeyDown(KeyCode.RightArrow) && _inventoryPanel.activeSelf)
         {

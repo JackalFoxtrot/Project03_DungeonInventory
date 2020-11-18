@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fac52778c0ce5a4184ae6e30e867346, type: 3}
+  m_Name: GreatBow
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4525714371594614723, guid: 0d653354e3c0b1f43a1313d15cec6d19, type: 3}
+  type: 1
+  itemname: Great Bow
+  description: A large bow, capable of fire a great distance
+  unidentified: 0
+  favorited: 0
+  newToInventory: 1
+  value: 20
+  rarity: 3
+  specificType: 7
+  atkBonus: 15
+  defBound: 0
