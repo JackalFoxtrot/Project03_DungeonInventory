@@ -15,6 +15,11 @@ public class LevelController : MonoBehaviour
             if(_inventoryPanel.activeSelf)
             {
                 _inventoryPanel.GetComponent<DisplayInventory>().CheckInventory();
+                _inventoryPanel.GetComponent<DisplayInventory>().UpdateItemInfo();
+            }
+            if(!_inventoryPanel.activeSelf)
+            {
+                _inventoryPanel.GetComponent<DisplayInventory>().ToggleNewItems();
             }
         }
         if(Input.GetKey(KeyCode.LeftShift) && !_inventoryPanel.activeSelf)
@@ -29,13 +34,25 @@ public class LevelController : MonoBehaviour
         {
             _inventoryPanel.GetComponent<DisplayInventory>().UpdateCategory(-1);
             _inventoryPanel.GetComponent<DisplayInventory>().CheckInventory();
+            _inventoryPanel.GetComponent<DisplayInventory>().ResetCursor();
+            _inventoryPanel.GetComponent<DisplayInventory>().UpdateItemInfo();
         }
         if (Input.GetKeyDown(KeyCode.RightArrow) && _inventoryPanel.activeSelf)
         {
             _inventoryPanel.GetComponent<DisplayInventory>().UpdateCategory(1);
             _inventoryPanel.GetComponent<DisplayInventory>().CheckInventory();
+            _inventoryPanel.GetComponent<DisplayInventory>().ResetCursor();
+            _inventoryPanel.GetComponent<DisplayInventory>().UpdateItemInfo();
         }
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.UpArrow) && _inventoryPanel.activeSelf)
+        {
+            _inventoryPanel.GetComponent<DisplayInventory>().UpdateCursor(1);
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow) && _inventoryPanel.activeSelf)
+        {
+            _inventoryPanel.GetComponent<DisplayInventory>().UpdateCursor(-1);
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             EndApplication();
         }

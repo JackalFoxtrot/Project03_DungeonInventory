@@ -18,7 +18,8 @@ MonoBehaviour:
   description: A chunk of beef from a slain cow.
   unidentified: 0
   favorited: 0
-  value: 0
-  rarity: 0
+  newToInventory: 0
+  value: 5
+  rarity: 1
   specificType: 3
   restoreHealthValue: 16

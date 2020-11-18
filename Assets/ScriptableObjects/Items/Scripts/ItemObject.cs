@@ -20,6 +20,7 @@ public abstract class ItemObject : ScriptableObject
 
     public bool unidentified;
     public bool favorited;
+    public bool newToInventory = true;
 
     public int value;
     public int rarity;
