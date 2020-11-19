@@ -23,6 +23,7 @@ public class LevelController : MonoBehaviour
                 _inventoryPanel.GetComponent<DisplayInventory>().ToggleNewItems();
             }
         }
+
         if(Input.GetKey(KeyCode.LeftShift) && !_inventoryPanel.activeSelf)
         {
             _ShiftArrowImages.SetActive(true);
@@ -31,6 +32,7 @@ public class LevelController : MonoBehaviour
         {
             _ShiftArrowImages.SetActive(false);
         }
+
         if(Input.GetKeyDown(KeyCode.LeftArrow) && _inventoryPanel.activeSelf)
         {
             _inventoryPanel.GetComponent<DisplayInventory>().UpdateCategory(-1);
@@ -49,6 +51,7 @@ public class LevelController : MonoBehaviour
             _inventoryPanel.GetComponent<DisplayInventory>().ResetCursor();
             _inventoryPanel.GetComponent<DisplayInventory>().UpdateItemInfo();
         }
+
         if (Input.GetKeyDown(KeyCode.UpArrow) && _inventoryPanel.activeSelf)
         {
             _inventoryPanel.GetComponent<DisplayInventory>().UpdateCursor(1);
@@ -57,6 +60,7 @@ public class LevelController : MonoBehaviour
         {
             _inventoryPanel.GetComponent<DisplayInventory>().UpdateCursor(-1);
         }
+        
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             EndApplication();
